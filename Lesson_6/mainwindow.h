@@ -9,7 +9,9 @@
 #include <QTranslator>
 #include <QFileDialog>
 #include <QPainter>
+#include <iostream>
 #include <QTabBar>
+#include <memory>
 #include <QDebug>
 #include <QDate>
 #include <QFile>
@@ -22,11 +24,13 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    void makeTabWidget();
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
+private Q_SLOTS:
     void closeTab(int index);
 
     void on_save_act_triggered();
@@ -52,7 +56,7 @@ private slots:
 private:
     QDir m_dir;
     Ui::MainWindow *ui;
-    QTabWidget* m_tabWidget;
+    std::shared_ptr<QTabWidget> m_tabWidget;
     QTranslator* m_translator;
 };
 #endif // MAINWINDOW_H

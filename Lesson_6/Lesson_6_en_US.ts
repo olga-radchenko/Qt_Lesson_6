@@ -25,7 +25,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="54"/>
-        <location filename="mainwindow.cpp" line="148"/>
+        <location filename="mainwindow.cpp" line="154"/>
         <source>Справка</source>
         <translation>Help</translation>
     </message>
@@ -51,7 +51,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="82"/>
-        <location filename="mainwindow.cpp" line="61"/>
+        <location filename="mainwindow.cpp" line="68"/>
         <source>Сохранить</source>
         <translation>Save</translation>
     </message>
@@ -62,7 +62,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="90"/>
-        <location filename="mainwindow.cpp" line="76"/>
+        <location filename="mainwindow.cpp" line="83"/>
         <source>Печать</source>
         <translation>Print</translation>
     </message>
@@ -107,9 +107,13 @@
         <translation>About</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="96"/>
         <source>Новый файл</source>
-        <translation>New file</translation>
+        <translation type="vanished">New file</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="94"/>
+        <source>Новый файл </source>
+        <translation>New file </translation>
     </message>
 </context>
 </TS>
