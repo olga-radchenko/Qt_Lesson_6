@@ -3,7 +3,6 @@
 
 #include <QtPrintSupport/QPrinter>
 #include <QtPrintSupport/QPrintDialog>
-#include <QPlainTextEdit>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QTranslator>
@@ -19,6 +18,7 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 class MainWindow : public QMainWindow
 {
