@@ -19,8 +19,8 @@
 
 class MyQPlainTextEdit : public QTextEdit
 {
-    /* оказывается, возможность выранивания текста есть у QTextEdit, но не у QPlainTextEdit...
-                                                                                               Печалька. */
+    /* оказывается, QPlainTextEdit не поддерживает выравнивание текста...
+                                                                            Печалька. */
     Q_OBJECT
 
     QMenu   *menu;
