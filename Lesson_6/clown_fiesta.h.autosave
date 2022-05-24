@@ -1,0 +1,22 @@
+#ifndef CLOWNFIESTA_H
+#define CLOWNFIESTA_H
+
+#include <QObject>
+#include <QWidget>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+
+class ClownFiesta : public QGraphicsView
+{
+    Q_OBJECT
+    
+public:
+     ClownFiesta();
+    ~ClownFiesta();
+     
+private:
+     QGraphicsScene *scene;
+  
+};
+
+#endif // CLOWNFIESTA_H
