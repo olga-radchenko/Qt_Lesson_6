@@ -7,9 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     m_dir.cdUp();
     m_dir.cd("Lesson_6");
+
     m_translator = new QTranslator();
     if(!m_translator->load("Lesson_6_en_US",m_dir.path()))
         qWarning()<<"Can't load translation file!";
+
+    QFile file{m_dir.path()+"\\light_theme.qss"};
+    file.open(QIODevice::ReadOnly);
+    const QString cssStyle{file.readAll()};
+    qApp->setStyleSheet(cssStyle);
 
     m_tabWidget = nullptr;
     ui->setupUi(this);
@@ -27,32 +33,37 @@ void MainWindow::on_open_act_triggered()
     QStringList files;
 
     if (openFileDialog.exec())
-     {
-         files = openFileDialog.selectedFiles();
+    {
+        files = openFileDialog.selectedFiles();
 
-         if(!m_tabWidget)
-         {
-             m_tabWidget = new QTabWidget(ui->centralwidget);
-             m_tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-             m_tabWidget->setGeometry(QRect(14, 9, 771, 531));
-             m_tabWidget->setTabsClosable(true);
-             connect(m_tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
-         }
+        if(!m_tabWidget)
+            makeTabWidget();
 
-         foreach(auto file, files)
-         {
-             QFile f{file};
-             if (!f.open(QIODevice::ReadWrite | QIODevice::Text)) return;
-             m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(f.readAll()), QFileInfo{f}.fileName()));
-         }
-         m_tabWidget->show();
-     }
+        foreach(auto file, files)
+        {
+            QFile f{file};
+            if (!f.open(QIODevice::ReadWrite | QIODevice::Text)) return;
+            m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(f.readAll()), QFileInfo{f}.fileName()));
+        }
+        m_tabWidget->show();
+    }
+}
+
+void MainWindow::makeTabWidget()
+{
+    m_tabWidget =std::shared_ptr<QTabWidget>(new QTabWidget(ui->centralwidget));
+    m_tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+    m_tabWidget->setGeometry(QRect(14, 9, 771, 531));
+    m_tabWidget->setTabsClosable(true);
+    m_tabWidget->setMovable(true);
+
+    connect(m_tabWidget.get(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+    connect(m_tabWidget.get()->tabBar(), SIGNAL(tabBarDoubleClicked(int)), this, SLOT(on_new_act_triggered()));
 }
 
 void MainWindow::closeTab(int index)
 {
     m_tabWidget->removeTab(index);
-    //if(m_tabWidget->in) если нет открытых вкладок - удалить таб вижет через шеред поинтер
 }
 
 void MainWindow::on_save_act_triggered()
@@ -85,16 +96,15 @@ void MainWindow::on_print_act_triggered()
 
 void MainWindow::on_new_act_triggered()
 {
-    if(!m_tabWidget)
-    {
-        m_tabWidget = new QTabWidget(ui->centralwidget);
-        m_tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        m_tabWidget->setGeometry(QRect(14, 9, 771, 531));
-        m_tabWidget->setTabsClosable(true);
-        connect(m_tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
-    }
+     QString newFileName = tr("Новый файл ");
 
-    m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(), tr("Новый файл")));
+    if(!m_tabWidget)
+        makeTabWidget();
+
+    if(m_tabWidget->count() > 0)
+        newFileName += QString::number(m_tabWidget->count());
+
+    m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(), newFileName));
     m_tabWidget->show();
 }
 
