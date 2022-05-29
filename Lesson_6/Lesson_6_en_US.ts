@@ -25,7 +25,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="54"/>
-        <location filename="mainwindow.cpp" line="154"/>
+        <location filename="mainwindow.cpp" line="160"/>
         <source>Справка</source>
         <translation>Help</translation>
     </message>
@@ -51,7 +51,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="82"/>
-        <location filename="mainwindow.cpp" line="68"/>
+        <location filename="mainwindow.cpp" line="74"/>
         <source>Сохранить</source>
         <translation>Save</translation>
     </message>
@@ -62,7 +62,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="90"/>
-        <location filename="mainwindow.cpp" line="83"/>
+        <location filename="mainwindow.cpp" line="89"/>
         <source>Печать</source>
         <translation>Print</translation>
     </message>
@@ -111,9 +111,88 @@
         <translation type="vanished">New file</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="94"/>
+        <location filename="mainwindow.cpp" line="100"/>
         <source>Новый файл </source>
         <translation>New file </translation>
+    </message>
+</context>
+<context>
+    <name>MyQPlainTextEdit</name>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="14"/>
+        <source>Выровнять</source>
+        <oldsource>Выровнить</oldsource>
+        <translation>Align</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="23"/>
+        <source>Отменить</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="28"/>
+        <source>Вернуть</source>
+        <translation>Redo</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="33"/>
+        <source>Вырезать</source>
+        <translation>Cut</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="38"/>
+        <source>Копировать</source>
+        <translation>Copy</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="43"/>
+        <source>Вставить</source>
+        <translation>Paste</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="48"/>
+        <source>Удалить</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="53"/>
+        <source>Выделить все</source>
+        <translation>Select All</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="58"/>
+        <source>Копировать формат</source>
+        <translation>Copy format</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="59"/>
+        <source>Применить формат</source>
+        <translation>Apply format</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="60"/>
+        <source>Цвет...</source>
+        <translation>Color...</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="61"/>
+        <source>Формат...</source>
+        <translation>Format...</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="62"/>
+        <source>по центру</source>
+        <translation>centre</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="63"/>
+        <source>по правому краю</source>
+        <translation>right</translation>
+    </message>
+    <message>
+        <location filename="myqplaintextedit.cpp" line="64"/>
+        <source>по левому краю</source>
+        <translation>left</translation>
     </message>
 </context>
 </TS>

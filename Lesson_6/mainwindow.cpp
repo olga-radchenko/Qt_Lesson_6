@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "myqplaintextedit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -43,7 +44,7 @@ void MainWindow::on_open_act_triggered()
         {
             QFile f{file};
             if (!f.open(QIODevice::ReadWrite | QIODevice::Text)) return;
-            m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(f.readAll()), QFileInfo{f}.fileName()));
+            m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new  MyQPlainTextEdit(QString::fromUtf8(f.readAll())), QFileInfo{f}.fileName()));
         }
         m_tabWidget->show();
     }
@@ -75,7 +76,7 @@ void MainWindow::on_save_act_triggered()
     QFile file{fileName};
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
 
-    auto txtWdgtCh = qobject_cast<QPlainTextEdit *>(m_tabWidget->currentWidget());
+    auto txtWdgtCh = qobject_cast<MyQPlainTextEdit *>(m_tabWidget->currentWidget());
 
     file.write(txtWdgtCh->toPlainText().toLocal8Bit());
     file.close();
@@ -90,7 +91,7 @@ void MainWindow::on_print_act_triggered()
     if (dlg.exec() != QDialog::Accepted)
         return;
 
-    auto txtWdgtCh = qobject_cast<QPlainTextEdit *>(m_tabWidget->currentWidget());
+    auto txtWdgtCh = qobject_cast<MyQPlainTextEdit *>(m_tabWidget->currentWidget());
     txtWdgtCh->print(&printer);
 }
 
@@ -104,7 +105,7 @@ void MainWindow::on_new_act_triggered()
     if(m_tabWidget->count() > 0)
         newFileName += QString::number(m_tabWidget->count());
 
-    m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new QPlainTextEdit(), newFileName));
+    m_tabWidget->setCurrentIndex(m_tabWidget->addTab(new MyQPlainTextEdit(), newFileName));
     m_tabWidget->show();
 }
 
